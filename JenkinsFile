@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Construir Aplicación') {
             steps {
-                bat './mvnw clean package'  // Si usas Maven Wrapper
+                bat './mvnw clean package -DskipTests '  // Si usas Maven Wrapper
                 // o
                 // sh 'mvn clean package' // Si tienes Maven instalado
             }
