@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clonar Repositorio') {
+            steps {
+                git 'https://github.com/EmiliaHerrera/ejercicio1.git'
+            }
+        }
+        stage('Construir Aplicación') {
+            steps {
+                bat './mvnw clean package'  // Si usas Maven Wrapper
+                // o
+                // sh 'mvn clean package' // Si tienes Maven instalado
+            }
+        }
+        stage('Ejecutar Aplicación de Escritorio') {
+            steps {
+                sh 'java -jar target/SpamBlocker-0.0.1-SNAPSHOT'  // Ajusta la ruta si es necesario
+            }
+        }
+    }
+}
